@@ -1,15 +1,13 @@
-class teacher:
-    def __init__(self, teacher_id,name,age,subject):
+class Teacher:
+    def __init__(self, teacher_id, name, age, subject, salary):
         self.teacher_id = teacher_id
         self.name = name
         self.age = age
         self.subject = subject
-    def to_list(self):
-        return[self.teacher_id,self.name,self.age,self.subject]
-    
-    def display(self):
-        print(f"Teacher id: {self.teacher_id},name:{self.name},age:{self.age},grade:{self.subject}")
-'''t1= teacher(1,"Rishi",20,"python")
+        self.salary = salary
 
-teacher_data= t1.to_list()
-print(teacher_data)'''
+    def to_list(self):
+        return [self.teacher_id, self.name, self.age, self.subject, self.salary]
+
+    def display(self):
+        print(f"ID: {self.teacher_id}, Name: {self.name}, Age: {self.age}, Subject: {self.subject}, Salary: {self.salary}")

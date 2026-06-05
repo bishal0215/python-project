@@ -8,6 +8,8 @@ def get_connection():
 def create_table():
     conn = get_connection()
     cursor = conn.cursor()
+
+    # Students table
     cursor.execute('''
         CREATE TABLE IF NOT EXISTS students (
             id INTEGER PRIMARY KEY,
@@ -16,5 +18,17 @@ def create_table():
             grade TEXT
         )
     ''')
+
+    # Teachers table (FIXED + salary included)
+    cursor.execute('''
+        CREATE TABLE IF NOT EXISTS teachers (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            name TEXT NOT NULL,
+            age INTEGER,
+            subject TEXT,
+            salary REAL
+        )
+    ''')
+
     conn.commit()
     conn.close()
