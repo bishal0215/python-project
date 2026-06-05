@@ -29,6 +29,14 @@ def create_table():
             salary REAL
         )
     ''')
+    cursor.execute('''
+        CREATE TABLE IF NOT EXISTS courses (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            name TEXT,
+            description TEXT
+    )
+
+   ''')
 
     conn.commit()
     conn.close()

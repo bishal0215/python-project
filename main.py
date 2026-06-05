@@ -1,6 +1,8 @@
 from database import create_table
 from student import Student
 from teacher import Teacher
+from course import Course
+from course_service import add_course, view_courses as get_all_courses
 from student_service import add_student, view_students as get_all_students
 from teacher_service import add_teacher, view_teachers as get_all_teachers
 
@@ -12,7 +14,9 @@ while True:
     print("2. View Students")
     print("3. Add Teacher")
     print("4. View Teachers")
-    print("5. Exit")
+    print("5. Add Course")
+    print("6. View Courses")
+    print("7. Exit")
 
     choice = input("Enter your choice: ")
 
@@ -44,8 +48,21 @@ while True:
     elif choice == '4':
         for teacher in get_all_teachers():
             print(teacher)
-
     elif choice == '5':
+        course = Course(
+            int(input("Enter course ID: ")),
+            input("Enter course name: "),
+            input("Enter course description: ")
+        )
+        add_course(course)
+        print("Course added successfully!")
+    elif choice == '6':
+        courses = get_all_courses()
+        print("\n--- Course List ---")
+        for course in courses:
+            print(course)
+
+    elif choice == '7':
         print("Exiting...")
         break
 
