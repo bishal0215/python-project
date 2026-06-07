@@ -21,3 +21,18 @@ def view_students():
     students = cursor.fetchall()
     conn.close()
     return students
+
+def update_student(student):
+    conn = get_connection()
+    cursor = conn.cursor()
+    cursor.execute('''
+                    UPDATE students
+                    SET name = ?, age = ?, grade = ?
+                    WHERE id = ?''',
+                        (student.name,
+                        student.age,
+                        student.grade,
+                        student.student_id)
+                   )
+    conn.commit()
+    conn.close()

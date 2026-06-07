@@ -17,7 +17,8 @@ while True:
     print("5. Add Course")
     print("6. View Courses")
     print("7. Update Teacher")
-    print("8. Exit")
+    print("8. Update Student")
+    print("9. Exit")
 
     choice = input("Enter your choice: ")
 
@@ -74,7 +75,14 @@ while True:
         print("Teacher updated successfully!")
 
     elif choice == '8':
-        print("Exiting...")
+        student_id = int(input("Enter student ID to update: "))
+        name = input("new name:")
+        age = int(input("new age:"))
+        grade = input("new grade:")
+        student = Student(student_id, name, age, grade)
+        print("Student updated successfully!")
+    elif choice == '9':
+        print("Exiting the system. Goodbye!")
         break
 
     else:
