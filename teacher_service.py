@@ -27,3 +27,23 @@ def view_teachers():
 
     conn.close()
     return rows
+
+def update_teacher(teacher):
+    conn = get_connection()
+    cursor = conn.cursor()
+
+    cursor.execute('''
+        UPDATE teachers
+        SET name = ?, age = ?, subject = ?, salary = ?
+        WHERE id = ?
+    ''', (
+        teacher.name,
+        teacher.age,
+        teacher.subject,
+        teacher.salary,
+        teacher.teacher_id
+    ))
+
+    conn.commit()
+    conn.close()
+    

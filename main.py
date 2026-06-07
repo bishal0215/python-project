@@ -16,7 +16,8 @@ while True:
     print("4. View Teachers")
     print("5. Add Course")
     print("6. View Courses")
-    print("7. Exit")
+    print("7. Update Teacher")
+    print("8. Exit")
 
     choice = input("Enter your choice: ")
 
@@ -63,6 +64,16 @@ while True:
             print(course)
 
     elif choice == '7':
+        teacher_id = int(input("Enter teacher ID to update: "))
+        name = input("new name:")
+        subject = input("new subject:")
+
+        age = int(input("new age:"))
+        salary = float(input("new salary:"))
+        teacher = Teacher(teacher_id, name, age, subject, salary)
+        print("Teacher updated successfully!")
+
+    elif choice == '8':
         print("Exiting...")
         break
 
