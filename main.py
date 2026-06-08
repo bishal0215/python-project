@@ -3,8 +3,8 @@ from student import Student
 from teacher import Teacher
 from course import Course
 from course_service import add_course, view_courses as get_all_courses
-from student_service import add_student, view_students as get_all_students
-from teacher_service import add_teacher, view_teachers as get_all_teachers
+from student_service import add_student, update_student, view_students as get_all_students
+from teacher_service import add_teacher, update_teacher, view_teachers as get_all_teachers
 
 create_table()
 
@@ -72,7 +72,11 @@ while True:
         age = int(input("new age:"))
         salary = float(input("new salary:"))
         teacher = Teacher(teacher_id, name, age, subject, salary)
-        print("Teacher updated successfully!")
+        update_rows = update_teacher(teacher)
+        if update_rows :
+            print("Teacher updated successfully!")
+        else:
+            print("no teacher found with that id")
 
     elif choice == '8':
         student_id = int(input("Enter student ID to update: "))
@@ -80,7 +84,11 @@ while True:
         age = int(input("new age:"))
         grade = input("new grade:")
         student = Student(student_id, name, age, grade)
-        print("Student updated successfully!")
+        update_rows = update_student(student)
+        if update_rows:
+            print("Student updated successfully!")
+        else:
+            print("Failed to update student.")
     elif choice == '9':
         print("Exiting the system. Goodbye!")
         break

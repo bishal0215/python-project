@@ -36,3 +36,8 @@ def update_student(student):
                    )
     conn.commit()
     conn.close()
+    
+    update_rows = cursor.rowcount
+    conn.commit()
+    conn.close()
+    return update_rows

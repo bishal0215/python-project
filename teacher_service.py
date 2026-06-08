@@ -43,7 +43,10 @@ def update_teacher(teacher):
         teacher.salary,
         teacher.teacher_id
     ))
-
+    update_rows = cursor.rowcount
     conn.commit()
     conn.close()
+    return update_rows
+
+
     
