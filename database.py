@@ -15,7 +15,9 @@ def create_table():
             id INTEGER PRIMARY KEY,
             name TEXT NOT NULL,
             age INTEGER,
-            grade TEXT
+            grade TEXT,
+            teacher_id INTEGER,
+            FOREIGN KEY (teacher_id) REFERENCES teachers(id)
         )
     ''')
 

@@ -29,7 +29,8 @@ while True:
             int(input("Enter student ID: ")),
             input("Enter student name: "),
             int(input("Enter student age: ")),
-            input("Enter student grade: ")
+            input("Enter student grade: "),
+            int(input("Enter teacher ID: "))
         )
         add_student(student)
         print("Student added successfully!")
@@ -85,7 +86,8 @@ while True:
         name = input("new name:")
         age = int(input("new age:"))
         grade = input("new grade:")
-        student = Student(student_id, name, age, grade)
+        teacher_id = int(input("Enter teacher ID: "))
+        student = Student(student_id, name, age, grade, teacher_id)
         update_rows = update_student(student)
         if update_rows:
             print("Student updated successfully!")

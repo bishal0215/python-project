@@ -5,11 +5,12 @@ def add_student(student):
     cursor = conn.cursor()
     cursor.execute('''
                     INSERT INTO STUDENTS
-                    VALUES (?, ?, ?, ?)''',
+                    VALUES (?, ?, ?, ?,  ?)''',
                         (student.student_id,
                         student.name,
                         student.age,
-                        student.grade)
+                        student.grade,
+                        student.teacher_id)
                    )
     conn.commit()
     conn.close()
