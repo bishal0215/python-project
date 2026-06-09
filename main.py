@@ -3,8 +3,8 @@ from student import Student
 from teacher import Teacher
 from course import Course
 from course_service import add_course, view_courses as get_all_courses
-from student_service import add_student, update_student, view_students as get_all_students
-from teacher_service import add_teacher, update_teacher, view_teachers as get_all_teachers
+from student_service import add_student, delete_student, update_student, view_students as get_all_students
+from teacher_service import add_teacher, delete_teacher, update_teacher, view_teachers as get_all_teachers
 
 create_table()
 
@@ -18,7 +18,9 @@ while True:
     print("6. View Courses")
     print("7. Update Teacher")
     print("8. Update Student")
-    print("9. Exit")
+    print("9. Delete Teacher")
+    print("10. Delete Student")
+    print("11. Exit")
 
     choice = input("Enter your choice: ")
 
@@ -90,6 +92,21 @@ while True:
         else:
             print("Failed to update student.")
     elif choice == '9':
+        teacher_id = int(input("Enter teacher ID to delete: "))
+        delete_rows = delete_teacher(teacher_id)
+        if delete_rows:
+            print("Teacher deleted successfully!")
+        else:
+            print("Failed to delete teacher.")
+            
+    elif choice == '10':
+        student_id = int(input("Enter student ID to delete: "))
+        delete_rows = delete_student(student_id)
+        if delete_rows:
+            print("Student deleted successfully!")
+        else:
+            print("Failed to delete student.")
+    elif choice == '11':
         print("Exiting the system. Goodbye!")
         break
 

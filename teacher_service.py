@@ -47,6 +47,15 @@ def update_teacher(teacher):
     conn.commit()
     conn.close()
     return update_rows
+def delete_teacher(teacher_id):
+    conn = get_connection()
+    cursor = conn.cursor()
+
+    cursor.execute('DELETE FROM teachers WHERE id = ?', (teacher_id,))
+    delete_rows = cursor.rowcount
+    conn.commit()
+    conn.close()
+    return delete_rows
 
 
     

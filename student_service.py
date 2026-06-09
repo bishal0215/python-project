@@ -34,10 +34,18 @@ def update_student(student):
                         student.grade,
                         student.student_id)
                    )
-    conn.commit()
-    conn.close()
-    
+   
+
     update_rows = cursor.rowcount
     conn.commit()
     conn.close()
     return update_rows
+def delete_student(student_id):
+    conn = get_connection()
+    cursor = conn.cursor()
+
+    cursor.execute('DELETE FROM students WHERE id = ?', (student_id,))
+    delete_rows = cursor.rowcount
+    conn.commit()
+    conn.close()
+    return delete_rows
