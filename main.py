@@ -3,7 +3,7 @@ from student import Student
 from teacher import Teacher
 from course import Course
 from course_service import add_course, view_courses as get_all_courses
-from student_service import add_student, delete_student, update_student, view_students as get_all_students
+from student_service import add_student, delete_student, update_student, view_students_with_teachers as get_all_students 
 from teacher_service import add_teacher, delete_teacher, update_teacher, view_teachers as get_all_teachers
 
 create_table()
@@ -36,8 +36,16 @@ while True:
         print("Student added successfully!")
 
     elif choice == '2':
-        for student in get_all_students():
-            print(student)
+        students = get_all_students()
+        print("\n--- Student List ---")
+
+        for student in students:
+            student_id, name, age, grade, teacher_name, subject = student
+            if teacher_name:
+                print(f"ID: {student_id}, Name: {name}, Age: {age}, Grade: {grade}, Teacher: {teacher_name},Subject: {subject}")
+            else:
+                print(f"ID: {student_id}, Name: {name}, Age: {age}, Grade: {grade}, Teacher: Not assigned")
+
 
     elif choice == '3':
         teacher = Teacher(

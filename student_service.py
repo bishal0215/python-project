@@ -50,3 +50,21 @@ def delete_student(student_id):
     conn.commit()
     conn.close()
     return delete_rows
+
+def view_students_with_teachers():
+    conn = get_connection()
+    cursor = conn.cursor()
+    cursor.execute("""
+            SELECT 
+                   students.id,
+                   students.name,
+                   students.age,
+                   students.grade,
+                   teachers.name,
+                   teachers.subject
+            FROM students
+            LEFT JOIN teachers ON students.teacher_id = teachers.id
+    """)
+    students = cursor.fetchall()
+    conn.close()
+    return students
