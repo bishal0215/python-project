@@ -1,4 +1,5 @@
 from database import create_table
+from many_to_many_demo import search_students
 from student import Student
 from teacher import Teacher
 from course import Course
@@ -20,7 +21,8 @@ while True:
     print("8. Update Student")
     print("9. Delete Teacher")
     print("10. Delete Student")
-    print("11. Exit")
+    print("11. Search Students")
+    print("12. Exit")
 
     choice = input("Enter your choice: ")
 
@@ -117,6 +119,20 @@ while True:
         else:
             print("Failed to delete student.")
     elif choice == '11':
+        search_term = input("Enter student name or ID to search: ")
+        rows = search_students(search_term)
+        if rows:
+            print("\nSearch Results:")
+            for row in rows:
+                student_id, name, age, grade = row
+                print(
+                    f"student ID: {student_id}, Name: {name}, "
+                    f"Age: {age}, Grade: {grade}"
+                )
+        else:
+            print("No students found.")
+
+    elif choice == '12':
         print("Exiting the system. Goodbye!")
         break
 

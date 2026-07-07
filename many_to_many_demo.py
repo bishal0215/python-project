@@ -166,3 +166,13 @@ def main():
 if __name__ == "__main__":    
     main()
             
+def search_students(search_term):
+    conn = get_connection()
+    cursor = conn.cursor()
+    if search_term.isdigit():
+        cursor.execute("SELECT * FROM students WHERE id = ?", (int(search_term),))
+    else:
+        cursor.execute("SELECT * FROM students WHERE name LIKE ?", (f"%{search_term}%",))
+    rows = cursor.fetchall()
+    conn.close()
+    return rows
